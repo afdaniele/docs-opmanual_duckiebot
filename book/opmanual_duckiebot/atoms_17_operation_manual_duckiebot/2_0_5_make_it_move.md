@@ -21,17 +21,13 @@ both for the laptop and for the Duckiebot. The procedure is documented in [](+so
 
 ## Option 1 - With the Duckietown Shell {#make-it-move_shell status=ready}
 
-Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you have a gamepad then plug the usb dongle into the raspberry pi of your duckiebot and run:
+Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you have a gamepad then plug the usb dongle into the raspberry pi and you should be able to move it with the joystick.
 
-    $ dts duckiebot demo --demo_name joystick --duckiebot_name ![DUCKIEBOT_NAME]
-
-and you should be able to move it with the joystick.
-
-If you would like to move your robot using your laptop, first also run the line above - it will start the joystick node on the duckiebot that will listen to commands from the joystick emulator. To start the emulator, you can then run
+If you would like to move your robot using your laptop, you can run
 
     $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME]
 
-which, after startup should open the interface window that looks like:
+which, after startup should open the interface window that looks like the following,
 
 <figure>
     <figcaption>The keyboard control graphical user interface</figcaption>
@@ -82,36 +78,13 @@ Resolution: One of the base images is out of date
 
 Pull the base images on the Duckiebot:
 
-    $ docker -H ![DUCKIEBOT_NAME].local pull duckietown/rpi-duckiebot-base:master19
+    $ docker -H ![DUCKIEBOT_NAME].local pull duckietown/dt-duckiebot-interface:devel20
 
 and on the laptop:
 
     $ docker pull duckietown/rpi-duckiebot-base:master19-no-arm
 
-
-<!--
-## Option 2 - with Docker  {#make-it-move_docker status=ready}
-
-
-Verify that the container is running by either using [the Portainer interface](#docker-setup-portainer-interface)
-or by using `docker ps`.
-
-
-### Run the joystick demo
-
-Use the following command to run the joystick demo:
-
-
-    laptop $ docker -H ![hostname].local run -dit --privileged --name joystick --network=host -v /data:/data duckietown/rpi-duckiebot-joystick-demo:master18
-
-
-### Controlling your robot with a joystick
-
-If you have a joystick, you can use it to make your robot move.
-
-Otherwise, you can use the following instructions to run the demo with
-keyboard control.
--->
+TODO: Update the image above `duckietown/rpi-duckiebot-base:master19-no-arm`
 
 ## Option 2: Using the dashboard {#setup-ros-websocket-image status=beta}
 
